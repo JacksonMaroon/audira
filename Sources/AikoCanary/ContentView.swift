@@ -143,7 +143,7 @@ struct ContentView: View {
 
         transcriptionTask = Task.detached { [transcriptionService, transcriptionConfig] in
             do {
-                let text = try transcriptionService.transcribe(fileURL: url, config: transcriptionConfig)
+                let text = try await transcriptionService.transcribe(fileURL: url, config: transcriptionConfig)
                 if Task.isCancelled { return }
                 await MainActor.run {
                     transcript = text

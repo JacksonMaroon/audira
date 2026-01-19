@@ -1,3 +1,4 @@
+import AVFoundation
 import Foundation
 
 struct TranscriptionConfig {
@@ -8,6 +9,10 @@ struct TranscriptionConfig {
     var modelPath: URL?
     var pythonPath: URL?
     var canaryRoot: URL?
+    var chunkDuration: Double?
+    var overlapDuration: Double?
+    var maxGenerationDelta: Int?
+    var maxNewTokens: Int?
 }
 
 enum TranscriptionError: LocalizedError {
@@ -35,8 +40,14 @@ enum TranscriptionError: LocalizedError {
 
 final class TranscriptionService: ObservableObject {
     private var process: Process?
+    private let autoChunkThresholdSeconds: Double = 45.0
+    private let autoChunkDurationSeconds: Double = 30.0
+    private let autoOverlapSeconds: Double = 8.0
+    private let tokensPerSecondEstimate: Double = 6.0
+    private let minMaxGenerationDelta = 200
+    private let maxMaxGenerationDelta = 800
 
-    func transcribe(fileURL: URL, config: TranscriptionConfig) throws -> String {
+    func transcribe(fileURL: URL, config: TranscriptionConfig) async throws -> String {
         let pythonURL = resolvePythonPath(override: config.pythonPath)
         let modelURL = resolveModelPath(override: config.modelPath)
 
@@ -57,7 +68,40 @@ final class TranscriptionService: ObservableObject {
             "--target-lang", config.targetLang,
             "--task", config.task,
         ]
+
+        let durationSeconds = await audioDurationSeconds(for: fileURL)
+        var chunkDuration = config.chunkDuration
+        var overlapDuration = config.overlapDuration
+        var maxGenerationDelta = config.maxGenerationDelta
+        let maxNewTokens = config.maxNewTokens
+
+        if chunkDuration == nil, let durationSeconds, durationSeconds > autoChunkThresholdSeconds {
+            chunkDuration = autoChunkDurationSeconds
+            overlapDuration = autoOverlapSeconds
+        }
+
+        if maxGenerationDelta == nil && maxNewTokens == nil {
+            if let durationSeconds {
+                let basis = chunkDuration ?? durationSeconds
+                maxGenerationDelta = estimateMaxGenerationDelta(durationSeconds: basis)
+            } else {
+                maxGenerationDelta = minMaxGenerationDelta
+            }
+        }
+
         args.append(config.pnc ? "--pnc" : "--no-pnc")
+        if let chunkDuration {
+            args.append(contentsOf: ["--chunk-duration", String(chunkDuration)])
+            if let overlapDuration {
+                args.append(contentsOf: ["--overlap-duration", String(overlapDuration)])
+            }
+        }
+        if let maxGenerationDelta {
+            args.append(contentsOf: ["--max-generation-delta", String(maxGenerationDelta)])
+        }
+        if let maxNewTokens {
+            args.append(contentsOf: ["--max-new-tokens", String(maxNewTokens)])
+        }
         args.append(fileURL.path)
         process.arguments = args
 
@@ -103,6 +147,25 @@ final class TranscriptionService: ObservableObject {
             return text.trimmingCharacters(in: .whitespacesAndNewlines)
         }
         return last.trimmingCharacters(in: .whitespacesAndNewlines)
+    }
+
+    private func audioDurationSeconds(for url: URL) async -> Double? {
+        let asset = AVURLAsset(url: url)
+        do {
+            let duration = try await asset.load(.duration)
+            let seconds = CMTimeGetSeconds(duration)
+            if seconds.isFinite && seconds > 0 {
+                return seconds
+            }
+        } catch {
+            return nil
+        }
+        return nil
+    }
+
+    private func estimateMaxGenerationDelta(durationSeconds: Double) -> Int {
+        let estimate = Int(durationSeconds * tokensPerSecondEstimate)
+        return min(maxMaxGenerationDelta, max(minMaxGenerationDelta, estimate))
     }
 
     private func resolvePythonPath(override: URL?) -> URL {
