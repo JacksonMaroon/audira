@@ -15,7 +15,7 @@ struct SettingsView: View {
         ZStack {
             AikoBackground()
 
-            VStack(alignment: .leading, spacing: 20) {
+            VStack(alignment: .leading, spacing: 18) {
                 HStack {
                     Text("Settings")
                         .font(AikoTypography.title)
@@ -24,13 +24,11 @@ struct SettingsView: View {
                     Button("Done") {
                         dismiss()
                     }
-                    .buttonStyle(PillButtonStyle(kind: .neutral))
+                    .buttonStyle(.plain)
+                    .foregroundColor(AikoPalette.textSecondary)
                 }
 
-                Divider()
-                    .background(AikoPalette.cardBorder)
-
-                VStack(alignment: .leading, spacing: 12) {
+                VStack(alignment: .leading, spacing: 14) {
                     Text("Formatting")
                         .font(AikoTypography.subtitle)
                         .foregroundColor(AikoPalette.textSecondary)
@@ -52,10 +50,7 @@ struct SettingsView: View {
                                 .font(AikoTypography.body)
                                 .foregroundColor(AikoPalette.textSecondary)
                             Spacer()
-                            Stepper(
-                                value: $paragraphSentenceCount,
-                                in: 2...6
-                            ) {
+                            Stepper(value: $paragraphSentenceCount, in: 2...6) {
                                 Text("\(paragraphSentenceCount)")
                                     .font(AikoTypography.body)
                                     .foregroundColor(AikoPalette.textPrimary)
@@ -69,21 +64,13 @@ struct SettingsView: View {
                                 .font(AikoTypography.body)
                                 .foregroundColor(AikoPalette.textSecondary)
                             Spacer()
-                            Stepper(
-                                value: $wrapWidth,
-                                in: 60...140,
-                                step: 5
-                            ) {
+                            Stepper(value: $wrapWidth, in: 60...140, step: 5) {
                                 Text("\(wrapWidth)")
                                     .font(AikoTypography.body)
                                     .foregroundColor(AikoPalette.textPrimary)
                             }
                         }
                     }
-
-                    Text("Applies to new transcriptions.")
-                        .font(AikoTypography.bodyMuted)
-                        .foregroundColor(AikoPalette.textMuted)
                 }
 
                 Divider()
@@ -105,22 +92,23 @@ struct SettingsView: View {
                             RoundedRectangle(cornerRadius: 10, style: .continuous)
                                 .stroke(AikoPalette.pillBorder, lineWidth: 1)
                         )
-                    Text("Applies to new transcriptions.")
-                        .font(AikoTypography.bodyMuted)
-                        .foregroundColor(AikoPalette.textMuted)
                 }
+
+                Text("Applies to new transcriptions.")
+                    .font(AikoTypography.bodyMuted)
+                    .foregroundColor(AikoPalette.textMuted)
             }
             .padding(24)
             .frame(width: 520)
             .background(
-                RoundedRectangle(cornerRadius: 20, style: .continuous)
+                RoundedRectangle(cornerRadius: 18, style: .continuous)
                     .fill(AikoPalette.card)
             )
             .overlay(
-                RoundedRectangle(cornerRadius: 20, style: .continuous)
-                    .stroke(AikoPalette.cardBorder, lineWidth: 1)
+                RoundedRectangle(cornerRadius: 18, style: .continuous)
+                    .stroke(AikoPalette.cardBorder, lineWidth: 0.5)
             )
-            .shadow(color: Color.black.opacity(0.35), radius: 28, y: 12)
+            .shadow(color: Color.black.opacity(0.18), radius: 18, y: 8)
             .padding(32)
         }
     }

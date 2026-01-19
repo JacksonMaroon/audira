@@ -1,21 +1,78 @@
+import AppKit
 import SwiftUI
 
+private func dynamicColor(light: NSColor, dark: NSColor) -> Color {
+    Color(NSColor(name: nil) { appearance in
+        let match = appearance.bestMatch(from: [.darkAqua, .aqua])
+        return match == .darkAqua ? dark : light
+    })
+}
+
+private func rgb(_ red: Double, _ green: Double, _ blue: Double, _ alpha: Double = 1.0) -> NSColor {
+    NSColor(calibratedRed: red, green: green, blue: blue, alpha: alpha)
+}
+
 enum AikoPalette {
-    static let backgroundTop = Color(red: 0.16, green: 0.18, blue: 0.20)
-    static let backgroundBottom = Color(red: 0.12, green: 0.14, blue: 0.16)
-    static let card = Color(red: 0.18, green: 0.20, blue: 0.22)
-    static let cardBorder = Color(red: 0.28, green: 0.31, blue: 0.35)
-    static let pill = Color(red: 0.22, green: 0.25, blue: 0.28)
-    static let pillBorder = Color(red: 0.30, green: 0.33, blue: 0.37)
-    static let textPrimary = Color(red: 0.89, green: 0.90, blue: 0.91)
-    static let textSecondary = Color(red: 0.66, green: 0.68, blue: 0.71)
-    static let textMuted = Color(red: 0.52, green: 0.55, blue: 0.59)
-    static let accent = Color(red: 0.55, green: 0.53, blue: 0.93)
-    static let accentMuted = Color(red: 0.45, green: 0.43, blue: 0.74)
-    static let danger = Color(red: 0.73, green: 0.29, blue: 0.29)
-    static let dangerMuted = Color(red: 0.55, green: 0.21, blue: 0.21)
-    static let overlay = Color.black.opacity(0.35)
-    static let progressTrack = Color.white.opacity(0.08)
+    static let backgroundTop = dynamicColor(
+        light: rgb(0.96, 0.97, 0.98),
+        dark: rgb(0.16, 0.18, 0.20)
+    )
+    static let backgroundBottom = dynamicColor(
+        light: rgb(0.90, 0.92, 0.94),
+        dark: rgb(0.12, 0.14, 0.16)
+    )
+    static let card = dynamicColor(
+        light: rgb(0.97, 0.98, 0.99),
+        dark: rgb(0.18, 0.20, 0.22)
+    )
+    static let cardBorder = dynamicColor(
+        light: rgb(0.84, 0.86, 0.88),
+        dark: rgb(0.28, 0.31, 0.35)
+    )
+    static let pill = dynamicColor(
+        light: rgb(0.92, 0.94, 0.96),
+        dark: rgb(0.22, 0.25, 0.28)
+    )
+    static let pillBorder = dynamicColor(
+        light: rgb(0.82, 0.84, 0.87),
+        dark: rgb(0.30, 0.33, 0.37)
+    )
+    static let textPrimary = dynamicColor(
+        light: rgb(0.12, 0.13, 0.14),
+        dark: rgb(0.89, 0.90, 0.91)
+    )
+    static let textSecondary = dynamicColor(
+        light: rgb(0.34, 0.36, 0.38),
+        dark: rgb(0.66, 0.68, 0.71)
+    )
+    static let textMuted = dynamicColor(
+        light: rgb(0.48, 0.50, 0.53),
+        dark: rgb(0.52, 0.55, 0.59)
+    )
+    static let accent = dynamicColor(
+        light: rgb(0.66, 0.63, 0.90),
+        dark: rgb(0.55, 0.53, 0.93)
+    )
+    static let accentMuted = dynamicColor(
+        light: rgb(0.54, 0.51, 0.80),
+        dark: rgb(0.45, 0.43, 0.74)
+    )
+    static let danger = dynamicColor(
+        light: rgb(0.72, 0.23, 0.23),
+        dark: rgb(0.73, 0.29, 0.29)
+    )
+    static let dangerMuted = dynamicColor(
+        light: rgb(0.94, 0.82, 0.82),
+        dark: rgb(0.55, 0.21, 0.21)
+    )
+    static let overlay = dynamicColor(
+        light: rgb(0.0, 0.0, 0.0, 0.08),
+        dark: rgb(0.0, 0.0, 0.0, 0.35)
+    )
+    static let progressTrack = dynamicColor(
+        light: rgb(0.0, 0.0, 0.0, 0.08),
+        dark: rgb(1.0, 1.0, 1.0, 0.08)
+    )
 }
 
 enum AikoTypography {
