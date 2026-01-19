@@ -1,23 +1,38 @@
-# Audira UI
+# Audira
 
-SwiftUI macOS transcription shell.
+The only native Mac app for Canary speech recognition.
 
-## Run
+Audira brings NVIDIA's #1-ranked ASR model to your Mac as a proper native app -- not a CLI,
+not Electron, not a web wrapper.
 
-Open the folder in Xcode (File > Open) and run the app.
+- Record or import -- Drag & drop files or record directly
+- Canary-1B-v2 -- Best-in-class accuracy, 25 languages, translation
+- 100% local -- Runs on Apple Silicon, no cloud, no subscription
+- Native SwiftUI -- Fast, lightweight, feels like a Mac app should
 
-Or build from the CLI:
+## Screenshots
+
+(add 1-2 screenshots here)
+
+## Install
+
+Download from Releases or build from source:
 
 ```bash
-swift run
+open AikoCanary.xcodeproj
+# Run in Xcode
 ```
 
-## Notes
+## Requirements
 
-- Import, drag/drop, and recording are wired to the Canary CLI.
-- Defaults assume `~/canary-mlx/.venv/bin/python` and `~/canary-mlx/canary-1b-v2-mlx`.
-- Override with environment variables:
-  - `CANARY_MLX_PYTHON` (path to python)
-  - `CANARY_MODEL` (path to model folder)
-  - `CANARY_MLX_ROOT` (path to `canary-mlx` repo, for module resolution)
-- Microphone access may require permission in System Settings > Privacy & Security.
+- macOS 13+
+- Apple Silicon (M1/M2/M3/M4)
+- ~6GB free RAM
+
+## Setup
+
+Audira uses canary-mlx under the hood. First time setup:
+
+```bash
+# ... setup instructions ... (ill add screesnhot later, just leave empty space for now)
+```
