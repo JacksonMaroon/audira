@@ -16,6 +16,7 @@ struct ContentView: View {
     @State private var language: String = "English"
     @State private var isTargeted = false
     @State private var showingImporter = false
+    @State private var showingSettings = false
     @State private var recordingStart: Date? = nil
     @State private var transcriptionTask: Task<Void, Never>? = nil
     @State private var alertMessage: String = ""
@@ -23,6 +24,9 @@ struct ContentView: View {
     @State private var transcriptionConfig = TranscriptionConfig()
     @StateObject private var transcriptionService = TranscriptionService()
     @StateObject private var recordingService = RecordingService()
+    @AppStorage("formattingStyle") private var formattingStyleRaw = FormattingStyle.sentencePerLine.rawValue
+    @AppStorage("paragraphSentenceCount") private var paragraphSentenceCount = 3
+    @AppStorage("wrapWidth") private var wrapWidth = 80
 
     var body: some View {
         ZStack {
@@ -63,7 +67,7 @@ struct ContentView: View {
                 onStop: stopTranscription,
                 onCopy: copyTranscript,
                 onShare: {},
-                onMore: {}
+                onMore: { showingSettings = true }
             )
         }
         .fileImporter(
@@ -86,6 +90,14 @@ struct ContentView: View {
             Button("OK", role: .cancel) {}
         } message: {
             Text(alertMessage)
+        }
+        .sheet(isPresented: $showingSettings) {
+            SettingsView(
+                isPresented: $showingSettings,
+                formattingStyle: formattingStyleBinding,
+                paragraphSentenceCount: $paragraphSentenceCount,
+                wrapWidth: $wrapWidth
+            )
         }
     }
 
@@ -146,7 +158,12 @@ struct ContentView: View {
                 let text = try await transcriptionService.transcribe(fileURL: url, config: transcriptionConfig)
                 if Task.isCancelled { return }
                 await MainActor.run {
-                    transcript = text
+                    transcript = TextFormatter.format(
+                        text,
+                        style: formattingStyle,
+                        paragraphSentenceCount: paragraphSentenceCount,
+                        wrapWidth: wrapWidth
+                    )
                     stage = .result
                 }
             } catch {
@@ -182,5 +199,16 @@ struct ContentView: View {
     private func showError(_ message: String) {
         alertMessage = message
         showAlert = true
+    }
+
+    private var formattingStyle: FormattingStyle {
+        FormattingStyle(rawValue: formattingStyleRaw) ?? .sentencePerLine
+    }
+
+    private var formattingStyleBinding: Binding<FormattingStyle> {
+        Binding(
+            get: { formattingStyle },
+            set: { formattingStyleRaw = $0.rawValue }
+        )
     }
 }
