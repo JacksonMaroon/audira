@@ -9,7 +9,9 @@
 /* Begin PBXBuildFile section */
 		096D547973537D546A4640F6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7511A47658E62FDB1137AE /* ContentView.swift */; };
 		0D3E08AA15E020C00E3DB1F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 39FFE6CF913606BFC5D13224 /* Assets.xcassets */; };
+		5BA191C5619C4C9049F57C94 /* Formatting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 16ABB75CA8AB6293293E87D7 /* Formatting.swift */; };
 		5CEEA8FC9A1E3E341D266D0D /* AikoCanaryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF31BC03330CA428ECE3D10B /* AikoCanaryApp.swift */; };
+		8D3FD5253CED6F6783FD9FA0 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4A2F374222CBF91B30D02C9 /* SettingsView.swift */; };
 		8F69593A43F4007B8BAB7442 /* TranscriptionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDE710F1BDAC06D88C2E7EB /* TranscriptionService.swift */; };
 		B993A7B813F4AE041A7E8ABD /* RecordingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73951660516A26AD0677302 /* RecordingService.swift */; };
 		EC6026B6ECA2B16199F83D41 /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F78863F3A353EA40C79D46 /* Components.swift */; };
@@ -17,8 +19,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		16ABB75CA8AB6293293E87D7 /* Formatting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formatting.swift; sourceTree = "<group>"; };
 		39FFE6CF913606BFC5D13224 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		57F78863F3A353EA40C79D46 /* Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Components.swift; sourceTree = "<group>"; };
+		A4A2F374222CBF91B30D02C9 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		ADDE710F1BDAC06D88C2E7EB /* TranscriptionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranscriptionService.swift; sourceTree = "<group>"; };
 		CE7511A47658E62FDB1137AE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		D0538423D5E06DAFFE3760B4 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
@@ -59,7 +63,9 @@
 				EF31BC03330CA428ECE3D10B /* AikoCanaryApp.swift */,
 				57F78863F3A353EA40C79D46 /* Components.swift */,
 				CE7511A47658E62FDB1137AE /* ContentView.swift */,
+				16ABB75CA8AB6293293E87D7 /* Formatting.swift */,
 				E73951660516A26AD0677302 /* RecordingService.swift */,
+				A4A2F374222CBF91B30D02C9 /* SettingsView.swift */,
 				D0538423D5E06DAFFE3760B4 /* Theme.swift */,
 				ADDE710F1BDAC06D88C2E7EB /* TranscriptionService.swift */,
 			);
@@ -135,7 +141,9 @@
 				5CEEA8FC9A1E3E341D266D0D /* AikoCanaryApp.swift in Sources */,
 				EC6026B6ECA2B16199F83D41 /* Components.swift in Sources */,
 				096D547973537D546A4640F6 /* ContentView.swift in Sources */,
+				5BA191C5619C4C9049F57C94 /* Formatting.swift in Sources */,
 				B993A7B813F4AE041A7E8ABD /* RecordingService.swift in Sources */,
+				8D3FD5253CED6F6783FD9FA0 /* SettingsView.swift in Sources */,
 				F018AE4B1001CDE0C67B6440 /* Theme.swift in Sources */,
 				8F69593A43F4007B8BAB7442 /* TranscriptionService.swift in Sources */,
 			);
