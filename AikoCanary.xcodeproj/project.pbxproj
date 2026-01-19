@@ -1,0 +1,322 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		096D547973537D546A4640F6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7511A47658E62FDB1137AE /* ContentView.swift */; };
+		0D3E08AA15E020C00E3DB1F2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 39FFE6CF913606BFC5D13224 /* Assets.xcassets */; };
+		5CEEA8FC9A1E3E341D266D0D /* AikoCanaryApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF31BC03330CA428ECE3D10B /* AikoCanaryApp.swift */; };
+		8F69593A43F4007B8BAB7442 /* TranscriptionService.swift in Sources */ = {isa = PBXBuildFile; fileRef = ADDE710F1BDAC06D88C2E7EB /* TranscriptionService.swift */; };
+		B993A7B813F4AE041A7E8ABD /* RecordingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = E73951660516A26AD0677302 /* RecordingService.swift */; };
+		EC6026B6ECA2B16199F83D41 /* Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57F78863F3A353EA40C79D46 /* Components.swift */; };
+		F018AE4B1001CDE0C67B6440 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0538423D5E06DAFFE3760B4 /* Theme.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		39FFE6CF913606BFC5D13224 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		57F78863F3A353EA40C79D46 /* Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Components.swift; sourceTree = "<group>"; };
+		ADDE710F1BDAC06D88C2E7EB /* TranscriptionService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranscriptionService.swift; sourceTree = "<group>"; };
+		CE7511A47658E62FDB1137AE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		D0538423D5E06DAFFE3760B4 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
+		E0EFB39811F8CE7117D87840 /* AikoCanary.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AikoCanary.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E73951660516A26AD0677302 /* RecordingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingService.swift; sourceTree = "<group>"; };
+		EF31BC03330CA428ECE3D10B /* AikoCanaryApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AikoCanaryApp.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXGroup section */
+		3A11AD70632AFFDAFC3FE5E1 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E0EFB39811F8CE7117D87840 /* AikoCanary.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		90E70829E64D21B4F0F6F632 = {
+			isa = PBXGroup;
+			children = (
+				9EC64AA212A5DDB334F4282A /* AikoCanary */,
+				B9CBB7FDC7E720BB4FCF5C38 /* AikoCanary */,
+				3A11AD70632AFFDAFC3FE5E1 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9EC64AA212A5DDB334F4282A /* AikoCanary */ = {
+			isa = PBXGroup;
+			children = (
+				39FFE6CF913606BFC5D13224 /* Assets.xcassets */,
+			);
+			path = AikoCanary;
+			sourceTree = "<group>";
+		};
+		B9CBB7FDC7E720BB4FCF5C38 /* AikoCanary */ = {
+			isa = PBXGroup;
+			children = (
+				EF31BC03330CA428ECE3D10B /* AikoCanaryApp.swift */,
+				57F78863F3A353EA40C79D46 /* Components.swift */,
+				CE7511A47658E62FDB1137AE /* ContentView.swift */,
+				E73951660516A26AD0677302 /* RecordingService.swift */,
+				D0538423D5E06DAFFE3760B4 /* Theme.swift */,
+				ADDE710F1BDAC06D88C2E7EB /* TranscriptionService.swift */,
+			);
+			name = AikoCanary;
+			path = Sources/AikoCanary;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5DBCEBE1947333039140A551 /* AikoCanary */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 2E0E9F70187961AE65FE83D8 /* Build configuration list for PBXNativeTarget "AikoCanary" */;
+			buildPhases = (
+				9793AA83AB16E54FB97DD063 /* Sources */,
+				574D43CA0C2C09EE8B2AECE8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = AikoCanary;
+			packageProductDependencies = (
+			);
+			productName = AikoCanary;
+			productReference = E0EFB39811F8CE7117D87840 /* AikoCanary.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		2E966E927E5DCE2572C1E895 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+			};
+			buildConfigurationList = 4E1F9D75385A039E163F1D9F /* Build configuration list for PBXProject "AikoCanary" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = 90E70829E64D21B4F0F6F632;
+			minimizedProjectReferenceProxies = 1;
+			preferredProjectObjectVersion = 77;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5DBCEBE1947333039140A551 /* AikoCanary */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		574D43CA0C2C09EE8B2AECE8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0D3E08AA15E020C00E3DB1F2 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9793AA83AB16E54FB97DD063 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5CEEA8FC9A1E3E341D266D0D /* AikoCanaryApp.swift in Sources */,
+				EC6026B6ECA2B16199F83D41 /* Components.swift in Sources */,
+				096D547973537D546A4640F6 /* ContentView.swift in Sources */,
+				B993A7B813F4AE041A7E8ABD /* RecordingService.swift in Sources */,
+				F018AE4B1001CDE0C67B6440 /* Theme.swift in Sources */,
+				8F69593A43F4007B8BAB7442 /* TranscriptionService.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		3DADA4771A6FFBC3CE756A4E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = AikoCanary/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.jacksonmaroon.AikoCanary;
+				PRODUCT_NAME = Audira;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		D5D579DF1EDD19CE6F2F5D43 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = AikoCanary/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.jacksonmaroon.AikoCanary;
+				PRODUCT_NAME = Audira;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		DFC7860830EC165FFEC77362 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.9;
+			};
+			name = Release;
+		};
+		F07846287286F3557FF115BA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.9;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		2E0E9F70187961AE65FE83D8 /* Build configuration list for PBXNativeTarget "AikoCanary" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D5D579DF1EDD19CE6F2F5D43 /* Debug */,
+				3DADA4771A6FFBC3CE756A4E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		4E1F9D75385A039E163F1D9F /* Build configuration list for PBXProject "AikoCanary" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F07846287286F3557FF115BA /* Debug */,
+				DFC7860830EC165FFEC77362 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 2E966E927E5DCE2572C1E895 /* Project object */;
+}
