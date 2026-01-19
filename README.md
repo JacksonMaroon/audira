@@ -1,10 +1,10 @@
 # Audira UI
 
-SwiftUI macOS shell inspired by the Aiko screens.
+SwiftUI macOS transcription shell.
 
 ## Run
 
-Open the folder in Xcode (File > Open), select the AikoCanary target, and run.
+Open the folder in Xcode (File > Open) and run the app.
 
 Or build from the CLI:
 
