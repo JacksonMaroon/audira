@@ -8,8 +8,8 @@ struct AikoTopBar: View {
     let onRecord: () -> Void
     let onStop: () -> Void
     let onCopy: () -> Void
-    let onShare: () -> Void
     let onMore: () -> Void
+    let shareText: String
 
     var body: some View {
         HStack(spacing: 12) {
@@ -22,7 +22,7 @@ struct AikoTopBar: View {
             Spacer()
 
             if stage == .result {
-                ActionPill(onCopy: onCopy, onShare: onShare, onMore: onMore)
+                ActionPill(onCopy: onCopy, onMore: onMore, shareText: shareText)
             }
 
             if stage == .transcribing {
@@ -65,20 +65,30 @@ struct CircleIconButton: View {
 
 struct ActionPill: View {
     let onCopy: () -> Void
-    let onShare: () -> Void
     let onMore: () -> Void
+    let shareText: String
 
     var body: some View {
         HStack(spacing: 14) {
             Button(action: onCopy) {
                 Image(systemName: "doc.on.doc")
             }
-            Button(action: onShare) {
+            .buttonStyle(.plain)
+            .contentShape(Rectangle())
+
+            ShareLink(item: shareText) {
                 Image(systemName: "square.and.arrow.up")
             }
+            .buttonStyle(.plain)
+            .contentShape(Rectangle())
+            .disabled(shareText.isEmpty)
+            .opacity(shareText.isEmpty ? 0.4 : 1.0)
+
             Button(action: onMore) {
                 Image(systemName: "ellipsis")
             }
+            .buttonStyle(.plain)
+            .contentShape(Rectangle())
         }
         .font(.system(size: 12, weight: .semibold))
         .foregroundColor(AikoPalette.textSecondary)
@@ -92,7 +102,6 @@ struct ActionPill: View {
             RoundedRectangle(cornerRadius: 10, style: .continuous)
                 .stroke(AikoPalette.pillBorder, lineWidth: 1)
         )
-        .buttonStyle(.plain)
     }
 }
 

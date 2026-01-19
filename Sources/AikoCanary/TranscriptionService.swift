@@ -6,6 +6,7 @@ struct TranscriptionConfig {
     var targetLang: String = "en"
     var task: String = "transcribe"
     var pnc: Bool = true
+    var promptText: String? = nil
     var modelPath: URL?
     var pythonPath: URL?
     var canaryRoot: URL?
@@ -101,6 +102,10 @@ final class TranscriptionService: ObservableObject {
         }
         if let maxNewTokens {
             args.append(contentsOf: ["--max-new-tokens", String(maxNewTokens)])
+        }
+        if let promptText = config.promptText?.trimmingCharacters(in: .whitespacesAndNewlines),
+           !promptText.isEmpty {
+            args.append(contentsOf: ["--prompt", promptText])
         }
         args.append(fileURL.path)
         process.arguments = args

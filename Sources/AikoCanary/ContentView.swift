@@ -21,12 +21,12 @@ struct ContentView: View {
     @State private var transcriptionTask: Task<Void, Never>? = nil
     @State private var alertMessage: String = ""
     @State private var showAlert = false
-    @State private var transcriptionConfig = TranscriptionConfig()
     @StateObject private var transcriptionService = TranscriptionService()
     @StateObject private var recordingService = RecordingService()
     @AppStorage("formattingStyle") private var formattingStyleRaw = FormattingStyle.sentencePerLine.rawValue
     @AppStorage("paragraphSentenceCount") private var paragraphSentenceCount = 3
     @AppStorage("wrapWidth") private var wrapWidth = 80
+    @AppStorage("promptText") private var promptText = ""
 
     var body: some View {
         ZStack {
@@ -66,8 +66,8 @@ struct ContentView: View {
                 onRecord: startRecording,
                 onStop: stopTranscription,
                 onCopy: copyTranscript,
-                onShare: {},
-                onMore: { showingSettings = true }
+                onMore: { showingSettings = true },
+                shareText: transcript
             )
         }
         .fileImporter(
@@ -92,12 +92,7 @@ struct ContentView: View {
             Text(alertMessage)
         }
         .sheet(isPresented: $showingSettings) {
-            SettingsView(
-                isPresented: $showingSettings,
-                formattingStyle: formattingStyleBinding,
-                paragraphSentenceCount: $paragraphSentenceCount,
-                wrapWidth: $wrapWidth
-            )
+            SettingsView()
         }
     }
 
@@ -153,16 +148,25 @@ struct ContentView: View {
         transcriptionService.cancel()
         stage = .transcribing
 
-        transcriptionTask = Task.detached { [transcriptionService, transcriptionConfig] in
+        let prompt = promptText
+        let style = formattingStyle
+        let paragraphs = paragraphSentenceCount
+        let wrap = wrapWidth
+
+        transcriptionTask = Task.detached { [transcriptionService] in
             do {
-                let text = try await transcriptionService.transcribe(fileURL: url, config: transcriptionConfig)
+                var config = TranscriptionConfig()
+                if !prompt.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+                    config.promptText = prompt
+                }
+                let text = try await transcriptionService.transcribe(fileURL: url, config: config)
                 if Task.isCancelled { return }
                 await MainActor.run {
                     transcript = TextFormatter.format(
                         text,
-                        style: formattingStyle,
-                        paragraphSentenceCount: paragraphSentenceCount,
-                        wrapWidth: wrapWidth
+                        style: style,
+                        paragraphSentenceCount: paragraphs,
+                        wrapWidth: wrap
                     )
                     stage = .result
                 }
@@ -203,12 +207,5 @@ struct ContentView: View {
 
     private var formattingStyle: FormattingStyle {
         FormattingStyle(rawValue: formattingStyleRaw) ?? .sentencePerLine
-    }
-
-    private var formattingStyleBinding: Binding<FormattingStyle> {
-        Binding(
-            get: { formattingStyle },
-            set: { formattingStyleRaw = $0.rawValue }
-        )
     }
 }

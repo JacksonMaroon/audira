@@ -9,5 +9,9 @@ struct AikoCanaryApp: App {
         }
         .windowStyle(.hiddenTitleBar)
         .windowToolbarStyle(.unifiedCompact)
+
+        Settings {
+            SettingsView()
+        }
     }
 }
