@@ -19,7 +19,7 @@ not Electron, not a web wrapper.
 Download from Releases or build from source:
 
 ```bash
-open AikoCanary.xcodeproj
+open Audira.xcodeproj
 # Run in Xcode
 ```
 

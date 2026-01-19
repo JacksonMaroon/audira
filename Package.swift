@@ -2,15 +2,15 @@
 import PackageDescription
 
 let package = Package(
-    name: "AikoCanary",
+    name: "Audira",
     platforms: [.macOS(.v13)],
     products: [
-        .executable(name: "AikoCanary", targets: ["AikoCanary"]),
+        .executable(name: "Audira", targets: ["Audira"]),
     ],
     targets: [
         .executableTarget(
-            name: "AikoCanary",
-            path: "Sources/AikoCanary"
+            name: "Audira",
+            path: "Sources/Audira"
         ),
     ]
 )
